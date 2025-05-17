@@ -29,6 +29,17 @@
             <div class="stat">{{bPercent | number:1}}%</div>
           </div>
         </div>
+        <div id="leader" ng-if="total > 0">
+          <span ng-if="aVotes > bVotes">
+            Cats are leading by {{aVotes - bVotes}} vote<span ng-if="aVotes - bVotes > 1">s</span>
+          </span>
+          <span ng-if="bVotes > aVotes">
+            Dogs are leading by {{bVotes - aVotes}} vote<span ng-if="bVotes - aVotes > 1">s</span>
+          </span>
+          <span ng-if="aVotes == bVotes">
+            It&#39;s a tie!
+          </span>
+        </div>
       </div>
     </div>
     <div id="result">

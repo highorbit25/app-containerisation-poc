@@ -5,7 +5,12 @@ metadata:
     app: result
   name: result
 spec:
-  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  replicas: 4
   selector:
     matchLabels:
       app: result
@@ -15,8 +20,18 @@ spec:
         app: result
     spec:
       containers:
-      - image: dockersamples/examplevotingapp_result
+      - image: highorbit25/votingapp_result:v1
         name: result
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
         ports:
         - containerPort: 80
           name: result
+

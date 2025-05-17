@@ -46,8 +46,19 @@ body{
   text-align:center;
   vertical-align:middle;
 }
+#leader {
+  z-index:3;
+  position: relative;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: max-content;
+  background: #fff;
+  padding: 0.5em 1em;
+  font-size: 25px;
+}
 #result{
-  z-index: 3;
+  z-index: 4;
   position: absolute;
   bottom: 40px;
   right: 20px;
