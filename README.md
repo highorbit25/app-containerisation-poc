@@ -141,7 +141,8 @@ We can use this minikube UI dashboard to monitor our deployment
 minikube dashboard
 ```
 
-```➜  ~ minikube dashboard
+```
+minikube dashboard
 🤔  Verifying dashboard health ...
 🚀  Launching proxy ...
 🤔  Verifying proxy health ...
@@ -222,33 +223,33 @@ This architecture provide high availability, but not without limitations given t
 
 The architecture provides high availability at the application level through:
 
-- Container Redundancy: Multiple replicas of the application run simultaneously, allowing the service to remain available even if some containers fail.
+- **Container Redundancy:** Multiple replicas of the application run simultaneously, allowing the service to remain available even if some containers fail.
 
-- Self-Healing: Kubernetes automatically restarts failed containers and reschedules pods if they become unhealthy.
+- **Self-Healing:** Kubernetes automatically restarts failed containers and reschedules pods if they become unhealthy.
 
-- Rolling Updates: The ability to update applications without downtime ensures continuous service availability during maintenance.
+- **Rolling Updates:** The ability to update applications without downtime ensures continuous service availability during maintenance.
 
-- Health Monitoring: Readiness and liveness probes can continuously verify application health and automatically remove unhealthy instances from service.
+- **Health Monitoring:** Readiness and liveness probes can continuously verify application health and automatically remove unhealthy instances from service.
 
 ### Limitations of Single-Host Architecture
 While the architecture achieves application-level high availability, it has infrastructure-level limitations:
 
-- Single Point of Failure: The entire system depends on one physical/virtual machine. If the host fails, all containers will be unavailable.
+- **Single Point of Failure:** The entire system depends on one physical/virtual machine. If the host fails, all containers will be unavailable.
 
-- Resource Constraints: A single host has limited resources, potentially affecting performance during peak loads or updates.
+- **Resource Constraints:** A single host has limited resources, potentially affecting performance during peak loads or updates.
 
-- Availability Metrics: A single-host configuration typically provides around 99.5% availability, whereas a multi-host setup would be necessary for 99.9% or higher.
+- **Availability Metrics:** A single-host configuration typically provides around 99.5% availability, whereas a multi-host setup would be necessary for 99.9% or higher.
 
 ### Recommendations for Production Implementation
 For a production environment, I would recommend:
 
-- Multi-Node Cluster: Distribute containers across multiple nodes to eliminate single points of failure.
+- **Multi-Node Cluster:** Distribute containers across multiple nodes to eliminate single points of failure.
 
-- Control Plane Redundancy: Implement a multi-master Kubernetes setup for control plane high availability.
+- **Control Plane Redundancy:** Implement a multi-master Kubernetes setup for control plane high availability.
 
-- Cross-Zone Deployment: Distribute nodes across different availability zones for infrastructure resilience.
+- **Cross-Zone Deployment:** Distribute nodes across different availability zones for infrastructure resilience.
 
-- Stateful Service Management: Implement proper backup and replication strategies for stateful services like databases
+- **Stateful Service Management:** Implement proper backup and replication strategies for stateful services like databases
 
 
 ## Clean up
